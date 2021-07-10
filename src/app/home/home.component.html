@@ -1,1 +1,42 @@
-<p>home works!</p>
+<div>
+  <h3>Home</h3>
+
+  <button (click)="addTodo()">+ Add</button>
+
+  <div id="card-container">
+    <div 
+      class="card"
+      *ngFor="let todo of todoList; index as i" 
+      (click)="editTodo(todo)"
+    >
+      <div>
+        <div class="title">
+          {{ todo.date }}
+        </div>
+
+        <div class="content">
+          {{ todo.todo }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="edit-container">
+    <div 
+      class="card"
+      id="edit"
+      *ngIf="showEditTodo"
+    >
+      <label for="date">Date</label>
+      <input type="date"  [(ngModel)]="todoDate" id="date"/> 
+
+      <label for="text">Description</label>
+      <input type="text" [(ngModel)]="todo" id="text"/>
+      
+      <button (click)="updateTodo()">Update</button>
+      <button (click)="deleteTodo()">Delete</button>
+      <button (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>
