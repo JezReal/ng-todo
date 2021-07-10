@@ -30,13 +30,12 @@ export class LoginComponent implements OnInit {
     // e.preventDefault();
 
     if (this.loginForm.invalid) {
-      console.log('Invalid Input');
+      alert('Invalid input')
     } else {
       // console.log(this.loginForm.value);
       this.dataService
         .login(this.loginForm.value)
         .subscribe((res: any) => {
-          // console.log(res.data);
           if (res.data) {
             console.log('successfully logged in');
             window.sessionStorage.setItem(
@@ -45,8 +44,7 @@ export class LoginComponent implements OnInit {
             );
             this.router.navigate(['home']);
           } else if (res.error) {
-            console.log('invalid email or password');
-            
+            alert('Invalid email or password')
           }
         });
     }

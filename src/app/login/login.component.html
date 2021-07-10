@@ -1,19 +1,28 @@
-<div>
-  <form 
-    [formGroup]="loginForm" 
-    ngNativeValidate 
-    (submit)="onSubmit(loginForm.value)"
-  >
-    <input formControlName="email" type="email" placeholder="Email" />
-    <input formControlName="password" type="password" placeholder="Password" />
-    <button type="submit">Submit</button>
-   
-    <button 
-      routerLink="/register" 
-      style="margin-left: 20px" 
-      class="btn btn-success"
+<div id="wrapper">
+  <div id="form-container">
+
+    
+    <form 
+      [formGroup]="loginForm" 
+      ngNativeValidate 
+      (submit)="onSubmit(loginForm.value)"
     >
-      Register
-    </button>
-  </form>
+    
+      <h3>Login</h3>
+
+      <label for="email">Email</label>
+      <input formControlName="email" type="email" id="email"/>
+
+      <label for="password">Password</label>
+      <input formControlName="password" type="password" id="password"/>
+
+      <br>
+      <button type="submit">Submit</button>
+
+      <br>
+      <button routerLink="/register">
+        Register
+      </button>
+    </form>
+  </div>
 </div>
