@@ -46,14 +46,14 @@ export class HomeComponent implements OnInit {
 
   editTodo(todo: any) {
     this.showAddTodo = false;
-    
+
     this.todoId = todo.todo_id;
     this.todoDate= todo.date
     this.todo = todo.todo;
 
     this.showEditTodo = true
   }
-
+ 
   updateTodo() {
     this.dataService
       .update({
