@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   showEditTodo: boolean = false
   showAddTodo: boolean = false
+  showTip: boolean = false
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -38,8 +39,10 @@ export class HomeComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.data) {
           this.todoList = res.data;
+          this.showTip = false
         } else if (res.error) {
-          alert('no todos')
+          this.showTip = true
+          this.todoList = null
         }
       });
   }
