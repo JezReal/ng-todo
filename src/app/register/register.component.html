@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div id="wrapper">
+    <div id="form-container"> 
+      <form 
+        [formGroup]="registerForm" 
+        ngNativeValidate 
+        (submit)="onSubmit(registerForm.value)"
+      >
+      
+        <h3>Register</h3>
+  
+        <label for="email">Email</label>
+        <input formControlName="email" type="email" id="email"/>
+  
+        <label for="password">Password</label>
+        <input formControlName="password" type="password" id="password"/>
+  
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
