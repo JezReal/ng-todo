@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   showEditTodo: boolean = false
+  showAddTodo: boolean = false
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   editTodo(todo: any) {
-    console.log(todo);
+    this.showAddTodo = false;
     
     this.todoId = todo.todo_id;
     this.todoDate= todo.date
@@ -86,12 +87,38 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  cancel() {
+  cancelEdit() {
     this.showEditTodo = false
   }
 
-  addTodo() {
+  loadAddTodo() {
+    this.showEditTodo = false
+    this.showAddTodo = true
+    this.todoId = -1;
+    this.todoDate = '';
+    this.todo = '';
+  }
 
+  addTodo() {
+    this.dataService
+      .add({
+        account_id: window.sessionStorage.getItem('account_id'),
+        date: this.todoDate,
+        todo: this.todo
+      })
+      .subscribe((res: any) => {
+        if (res.data) {
+          console.log(res.data);
+          this.getAll();
+          this.showAddTodo = false
+        } else if (res.error) {
+          console.log('Wala');
+        }
+      });
+  }
+
+  cancelAdd() {
+    this.showAddTodo = false
   }
 
   logout() {

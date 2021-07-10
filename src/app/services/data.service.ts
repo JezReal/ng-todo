@@ -30,4 +30,9 @@ export class DataService {
   update(data: any) {
     return this.httpClient.post(this.link + "updatetodo", JSON.stringify(data));
   }
+
+  add(data: any) {
+    return this.httpClient.post(this.link + "inserttodo", JSON.stringify(data));
+
+  }
 }
