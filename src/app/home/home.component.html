@@ -1,7 +1,7 @@
 <div>
   <h3>Home</h3>
 
-  <button (click)="addTodo()">+ Add</button>
+  <button (click)="loadAddTodo()">+ Add</button>
 
   <div id="card-container">
     <div 
@@ -22,12 +22,11 @@
     </div>
   </div>
 
-  <div id="edit-container">
-    <div 
-      class="card"
-      id="edit"
-      *ngIf="showEditTodo"
-    >
+  <div 
+    class="input-container"
+    *ngIf="showEditTodo"  
+  >
+    <div class="card input">
       <label for="date">Date</label>
       <input type="date"  [(ngModel)]="todoDate" id="date"/> 
 
@@ -36,7 +35,23 @@
       
       <button (click)="updateTodo()">Update</button>
       <button (click)="deleteTodo()">Delete</button>
-      <button (click)="cancel()">Cancel</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+
+  <div 
+    class="input-container"
+    *ngIf="showAddTodo"  
+  >
+    <div class="card input">
+      <label for="date">Date</label>
+      <input type="date"  [(ngModel)]="todoDate" id="date"/> 
+
+      <label for="text">Description</label>
+      <input type="text" [(ngModel)]="todo" id="text"/>
+
+      <button (click)="addTodo()">Add</button>
+      <button (click)="cancelAdd()">Cancel</button>
     </div>
   </div>
 </div>
