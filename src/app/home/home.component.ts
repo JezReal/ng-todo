@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,11 @@ export class HomeComponent implements OnInit {
   showAddTodo: boolean = false
   showTip: boolean = false
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(
+    private dataService: DataService, 
+    private router: Router,
+    private user: UserService
+    ) { }
 
   ngOnInit(): void {
     this.getAll()
@@ -126,6 +131,7 @@ export class HomeComponent implements OnInit {
 
   logout() {
     sessionStorage.removeItem('account_id');
+    this.user.setUserLoggedOut()
     this.router.navigate(['/']);
   }
 }

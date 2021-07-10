@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private user: UserService
   ) { 
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
@@ -24,6 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.user.isUserLoggedIn()) {
+      this.router.navigate(['home'])
+    }
   }
 
   onSubmit(event: any) {
@@ -42,6 +47,7 @@ export class LoginComponent implements OnInit {
               'account_id',
               res.data.account_id
             );
+            this.user.setUserLoggedIn()
             this.router.navigate(['home']);
           } else if (res.error) {
             alert('Invalid email or password')
