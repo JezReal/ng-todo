@@ -18,4 +18,16 @@ export class DataService {
   register(data: any) {
     return this.httpClient.post(this.link + "register", JSON.stringify(data));
   }
+
+  getAllTodos(data: any) {
+    return this.httpClient.post(this.link + "todos", JSON.stringify(data));
+  }
+
+  delete(data: any) {
+    return this.httpClient.post(this.link + "deletetodo", JSON.stringify(data));
+  }
+
+  update(data: any) {
+    return this.httpClient.post(this.link + "updatetodo", JSON.stringify(data));
+  }
 }
