@@ -1,8 +1,13 @@
-<div>
+<div class="sched-container">
   <h3>Home</h3>
 
-  <button (click)="loadAddTodo()">+ Add</button>
-  <button (click)="logout()">Logout</button>
+  <div class="buttons-holder">
+
+    
+  <button id="addBtn" class="btn" (click)="loadAddTodo()">Add</button>
+  <button class="btn" (click)="logout()">Logout</button>
+
+  </div>
 
   <div id="card-container">
     <div 
@@ -27,16 +32,16 @@
     class="input-container"
     *ngIf="showEditTodo"  
   >
-    <div class="card input">
+    <div class="card-input input">
       <label for="date">Date</label>
       <input type="date"  [(ngModel)]="todoDate" id="date"/> 
 
       <label for="text">Description</label>
       <input type="text" [(ngModel)]="todo" id="text"/>
       
-      <button (click)="updateTodo()">Update</button>
-      <button (click)="deleteTodo()">Delete</button>
-      <button (click)="cancelEdit()">Cancel</button>
+      <button class="btn update" (click)="updateTodo()">Update</button>
+      <button class="btn delete" (click)="deleteTodo()">Delete</button>
+      <button class="btn" (click)="cancelEdit()">Cancel</button>
     </div>
   </div>
 
@@ -44,15 +49,15 @@
     class="input-container"
     *ngIf="showAddTodo"  
   >
-    <div class="card input">
+    <div class="card-input input">
       <label for="date">Date</label>
       <input type="date"  [(ngModel)]="todoDate" id="date"/> 
 
       <label for="text">Description</label>
       <input type="text" [(ngModel)]="todo" id="text"/>
 
-      <button (click)="addTodo()">Add</button>
-      <button (click)="cancelAdd()">Cancel</button>
+      <button class="btn add" (click)="addTodo()">Add</button>
+      <button class="btn" (click)="cancelAdd()">Cancel</button>
     </div>
   </div>
 
